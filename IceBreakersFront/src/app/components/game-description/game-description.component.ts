@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameDescriptionComponent implements OnInit {
 
-  constructor() { }
+  public gametitle: string;
+
+  constructor() {
+    this.gametitle = "Who is?"
+   }
 
   ngOnInit(): void {
   }
