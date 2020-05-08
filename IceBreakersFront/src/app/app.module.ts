@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { GameCoverComponent } from './components/game-cover/game-cover.component';
 import { GameDescriptionComponent } from './components/game-description/game-description.component';
 import { GameCreationComponent} from './components/game-creation/game-creation.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { FormsModule} from '@angular/forms';
 
@@ -17,6 +20,8 @@ import { FormsModule} from '@angular/forms';
     GameCreationComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+ 	  AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule
