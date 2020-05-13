@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {PlatformLocation } from '@angular/common';
+
 import { GameService } from "../../services/game.service";
+import { Game } from 'src/app/shared/models/game'; 
 
 @Component({
   selector: 'app-game-creation',
@@ -8,16 +11,21 @@ import { GameService } from "../../services/game.service";
 })
 export class GameCreationComponent implements OnInit {
 
-  constructor(private gameService: GameService) { 
-   }
-
+  constructor(private gameService: GameService, private platformLocation: PlatformLocation) { 
+   this.rootUrl = (platformLocation as any).location;
+  }
+   isGameCreated: boolean = false;
    gameName : string = '';
+   game: Game;
+   rootUrl:string;
 
   ngOnInit() {
+
   }
 
   createGame(){
-    this.gameService.createGame(this.gameName);
+    this.game = this.gameService.createGame(this.gameName);
+    this.isGameCreated = true;
   }
 
 }

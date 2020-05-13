@@ -1,7 +1,7 @@
 import { generate } from "shortid";
 
 export class Game {
-    //id: string;
+    id?: string;
     name: string;
     facilitatorUrl: string;
     participantUrl: string;

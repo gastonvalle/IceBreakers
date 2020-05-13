@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
 import { Game } from 'src/app/shared/models/game';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -9,15 +10,17 @@ import { Game } from 'src/app/shared/models/game';
 export class GameService {
 
   gamesRef: AngularFirestoreCollection<Game>;
-  game:Game;
+  games: Observable<Game[]>;
   
   constructor(private firestore: AngularFirestore) { 
     this.gamesRef = this.firestore.collection<Game>('games');
+    this.games = this.gamesRef.valueChanges({idField: 'id'});
   }
 
-  createGame(gameName:string){
-    this.game = new Game(gameName);
+  createGame(gameName:string) :Game{
+    var game = new Game(gameName);
         
-    return this.gamesRef.add({...this.game});
+    this.gamesRef.add({...game});
+    return game;
   }  
-}
+} 

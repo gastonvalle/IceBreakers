@@ -1,9 +1,16 @@
-<div>
-  <label for="gameName">
-    Ponle nombre a tu juego
-  </label>
-  <input id="gameName" type="text" [(ngModel)]="gameName" >
-</div>
+<ng-container *ngIf="!isGameCreated; else gameUrls">
+  <div>
+    <label for="gameName">
+      Ponle nombre a tu juego
+    </label>
+    <input id="gameName" type="text" [(ngModel)]="gameName" >
+  </div>
 
+  <button class="button" (click) = "createGame()">Crear un nuevo juego</button>
+</ng-container>
+<ng-template #gameUrls>
+  <p>URL del facilitador: </p> <a routerLink="facilitation/{{ game.facilitatorUrl}}"> {{rootUrl}}facilitation/{{ game.facilitatorUrl}}  </a>
+  <p>URL de participantes: </p> <a routerLink="/player/{{ game.participantUrl}}" > {{rootUrl}}player/{{ game.participantUrl}}  </a>
 
-<button class="button" (click) = "createGame()">Crear un nuevo juego</button>
+</ng-template>
+
