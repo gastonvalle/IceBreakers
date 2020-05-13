@@ -23,6 +23,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GameFacilitationComponent } from "./components/game-facilitation/game-facilitation.component";
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GameFacilitationComponent } from "./components/game-facilitation/game-f
     GameDescriptionComponent,
     GameCreationComponent,
     GameFacilitationComponent,
+    PlayerComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -49,6 +51,7 @@ import { GameFacilitationComponent } from "./components/game-facilitation/game-f
     RouterModule.forRoot([
       { path: '', component: GameCoverComponent },
       { path: 'facilitation/:facilitatorUrl', component: GameFacilitationComponent },
+      { path: 'player/:playerUrl', component: PlayerComponent },
     ])
   ],
   providers: [],
