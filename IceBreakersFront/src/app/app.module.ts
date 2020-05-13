@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameCoverComponent } from './components/game-cover/game-cover.component';
@@ -13,13 +14,15 @@ import { RouterModule } from '@angular/router';
 import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { GameFacilitationComponent } from "./components/game-facilitation/game-facilitation.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     GameCoverComponent,
     GameDescriptionComponent,
-    GameCreationComponent
+    GameCreationComponent,
+    GameFacilitationComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -27,7 +30,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,
+    RouterModule.forRoot([
+      { path: '', component: GameCoverComponent },
+      { path: 'facilitation/:facilitatorUrl', component: GameFacilitationComponent },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
