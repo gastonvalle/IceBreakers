@@ -1,16 +1,21 @@
+<mat-card>
+  <mat-card-header>Crear nuevo juego</mat-card-header>
 <ng-container *ngIf="!isGameCreated; else gameUrls">
   <div>
-    <label for="gameName">
+    <mat-form-field>
+    <mat-label for="gameName">
       Ponle nombre a tu juego
-    </label>
-    <input id="gameName" type="text" [(ngModel)]="gameName" >
+    </mat-label>
+    <input  matInput id="gameName" type="text" [(ngModel)]="gameName" >
+  </mat-form-field>
   </div>
 
-  <button class="button" (click) = "createGame()">Crear un nuevo juego</button>
+  <button mat-raised-button color="primary" class="button" (click) = "createGame()">Crear un nuevo juego</button>
 </ng-container>
 <ng-template #gameUrls>
   <p>URL del facilitador: </p> <a routerLink="facilitation/{{ game.facilitatorUrl}}"> {{rootUrl}}facilitation/{{ game.facilitatorUrl}}  </a>
   <p>URL de participantes: </p> <a routerLink="/player/{{ game.participantUrl}}" > {{rootUrl}}player/{{ game.participantUrl}}  </a>
 
 </ng-template>
+</mat-card>
 

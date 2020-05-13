@@ -12,6 +12,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { FormsModule} from '@angular/forms';
+
+//Angular Material
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GameFacilitationComponent } from "./components/game-facilitation/game-facilitation.component";
@@ -30,6 +38,14 @@ import { GameFacilitationComponent } from "./components/game-facilitation/game-f
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    //Angular Material
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatDividerModule,
+    //
     RouterModule.forRoot([
       { path: '', component: GameCoverComponent },
       { path: 'facilitation/:facilitatorUrl', component: GameFacilitationComponent },
