@@ -1,3 +1,30 @@
-<p>
-  Player URL => {{playerUrl}}
-</p>
+
+<!-- Player URL => {{playerUrl}} -->
+
+
+<mat-card>
+  <mat-card-header>Alta jugador</mat-card-header>
+  <div>
+    <mat-form-field>
+    <mat-label for="PlayerName">
+      Pon tu nombre
+    </mat-label>
+    <input  matInput id="PlayerName" type="text" [(ngModel)]="PlayerName" >
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="ImageURL">
+      Pon la imagen que te represente
+    </mat-label>
+    <input  matInput id="ImageURL" type="text" [(ngModel)]="ImageURL" >
+  </mat-form-field>
+  
+  </div>
+
+  <!--<button mat-raised-button color="primary" class="button" (click) = "createPlayer()">Crear un nuevo Jugador</button>
+  -->
+
+<button mat-raised-button color="primary" class="button">Crear un nuevo Jugador</button>
+
+
+</mat-card>

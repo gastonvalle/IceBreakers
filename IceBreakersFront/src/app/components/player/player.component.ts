@@ -9,7 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 export class PlayerComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
+  
   playerUrl :string ;
+  PlayerName :string;
+  ImageURL :string;
+
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.playerUrl = params.get('playerUrl');
