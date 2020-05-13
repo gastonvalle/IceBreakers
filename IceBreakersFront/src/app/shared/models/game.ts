@@ -11,9 +11,4 @@ export class Game {
         this.facilitatorUrl= generate();
         this.participantUrl= generate();  
     } 
-    
-    // deserialize(input: any) {
-    //     Object.assign(this, input);
-    //     return this;
-    //   }
 }
