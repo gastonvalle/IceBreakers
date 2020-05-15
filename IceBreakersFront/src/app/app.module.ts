@@ -7,8 +7,13 @@ import { AppComponent } from './app.component';
 import { GameCoverComponent } from './components/game-cover/game-cover.component';
 import { GameDescriptionComponent } from './components/game-description/game-description.component';
 import { GameCreationComponent} from './components/game-creation/game-creation.component';
+//Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+//Imagenes
+//import { AngularFireStorageModule } from '@angular/fire/storage';
+//import { StorageBucket } from '@angular/fire/storage';
+
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { FormsModule} from '@angular/forms';
@@ -35,11 +40,14 @@ import { PlayerComponent } from './components/player/player.component';
     PlayerComponent
   ],
   imports: [
+    //FireBase
     AngularFireModule.initializeApp(environment.firebase),
- 	  AngularFirestoreModule,
+    AngularFirestoreModule,
+    //AngularFireStorageModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    
     //Angular Material
     MatInputModule,
     MatButtonModule,
@@ -54,7 +62,10 @@ import { PlayerComponent } from './components/player/player.component';
       { path: 'player/:playerUrl', component: PlayerComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    //Imagenes fichero (revisar)
+    //{provide: StorageBucket, useValue:'gs://icebeakers-8e7a8.appspot.com'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
