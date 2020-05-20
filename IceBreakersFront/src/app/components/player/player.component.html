@@ -1,9 +1,9 @@
 
 <!-- Player URL => {{playerUrl}} -->
-
-
 <mat-card>
   <mat-card-header>Alta jugador</mat-card-header>
+  <br>
+  <ng-container *ngIf="!isPlayerCreated; else MesageCreatePlayer">
   <div>
     <mat-form-field>
     <mat-label for="namePlayer">
@@ -18,10 +18,12 @@
     </mat-label>
     <input  matInput id="imageUrl" type="text" [(ngModel)]="imageUrl" >
   </mat-form-field>
-  
   </div>
-
   <button mat-raised-button color="primary" class="button" (click) = "createPlayer()">Crear un nuevo Jugador</button>
+</ng-container>
 
+  <ng-template #MesageCreatePlayer>
+    <p>Jugador creado correctamente</p>
+  </ng-template>
 
 </mat-card>

@@ -34,13 +34,18 @@ export class GameService {
 
 
   createPlayer(namePlayer:string, imageUrl:string) {
-    var player = new Players(namePlayer, imageUrl);
+    
+    var game = new Game("provanom");
 
-    //this.gamesRef.add({...game});
-    //ok players this.playersRef.doc('/yKEjBH4BLBrEdB0FeyYw').update({...player});
-    //ok update players in game this.gamesRef.doc('/IhNmu5Ued1xRqWF8MT4o/players/r8lQQDVELsC7LBssYj2O').update({...player});
-    this.gamesRef.doc('/IhNmu5Ued1xRqWF8MT4o/players/identificador').set({...player});
-    //this.playersRef.doc('/yKEjBH4BLBrEdB0FeyYw').delete();
+    // Create a query against the collection
+    //let queryRef = this.gamesRef.get('/participantUrl/F5RJvk31Y3');
+
+    //game.players[1].namePlayer= namePlayer;
+    //game.players[1].imageUrl=imageUrl;
+    var player = new Players(namePlayer, imageUrl); 
+
+    //this.gamesRef.doc('/IhNmu5Ued1xRqWF8MT4o/').set({...game});
+    this.gamesRef.doc('/IhNmu5Ued1xRqWF8MT4o/players/0').set({...player});
     //this.playersRef.add({...player});
     return player;
   }

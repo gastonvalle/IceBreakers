@@ -5,11 +5,13 @@ export class Game {
     name: string;
     facilitatorUrl: string;
     participantUrl: string;
+    players: Players[];
 
     constructor(name:string){
         this.name = name;
         this.facilitatorUrl= generate();
         this.participantUrl= generate();
+        //this.players= null;
     } 
 }
 
