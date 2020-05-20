@@ -56,6 +56,7 @@ import { PlayerComponent } from './components/player/player.component';
     MatToolbarModule,
     MatDividerModule,
     //
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: GameCoverComponent },
       { path: 'facilitation/:facilitatorUrl', component: GameFacilitationComponent },
