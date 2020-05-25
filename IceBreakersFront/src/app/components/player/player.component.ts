@@ -15,7 +15,6 @@ export class PlayerComponent implements OnInit {
   constructor(private gameService: GameService, private route: ActivatedRoute, private platformLocation: PlatformLocation) { 
     //this.rootUrl = (platformLocation as any).location;
   }
-  game: Game;
   isPlayerCreated: boolean = false;
   newidGame;
   namePlayer: string;
