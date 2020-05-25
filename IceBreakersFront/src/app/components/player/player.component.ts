@@ -3,7 +3,7 @@ import { PlatformLocation } from '@angular/common'
 import { ActivatedRoute } from '@angular/router';
 
 import { GameService } from "../../services/game.service";
-import { Players } from 'src/app/shared/models/game'; 
+import { Players, Game } from 'src/app/shared/models/game'; 
 
 @Component({
   selector: 'app-player',
@@ -15,8 +15,9 @@ export class PlayerComponent implements OnInit {
   constructor(private gameService: GameService, private route: ActivatedRoute, private platformLocation: PlatformLocation) { 
     //this.rootUrl = (platformLocation as any).location;
   }
+  game: Game;
   isPlayerCreated: boolean = false;
-  idGame: string = 'IhNmu5Ued1xRqWF8MT4o';
+  newidGame;
   namePlayer: string;
   imageUrl: string;
   player: Players;
@@ -26,11 +27,27 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.playerUrl = params.get('playerUrl');
+      console.log ("playerUrl" + this.playerUrl);
     });
+
+    this.gameService.getGames().subscribe((gamesSnapshot) => {
+      gamesSnapshot.forEach((gameData: any) => {
+        console.log ("en el forEach " + gameData.payload.doc.id);
+        console.log ("información " + gameData.payload.doc.data().participantUrl);
+        if (gameData.payload.doc.data().participantUrl== this.playerUrl)
+        {
+          this.newidGame = gameData.payload.doc.id;
+          console.log ("if comparacion playerUrl " + this.newidGame);
+        }
+      })
+    });
+
   }
   createPlayer(){
-    this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl, this.idGame);
+    this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl, this.newidGame);
     this.isPlayerCreated = true;
   }
+
+
 
 }

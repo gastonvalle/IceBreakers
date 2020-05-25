@@ -32,4 +32,7 @@ export class GameService {
     return player;
   }
 
+  getGames() {
+    return this.firestore.collection('games').snapshotChanges();
+  }
 } 
