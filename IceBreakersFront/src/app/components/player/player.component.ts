@@ -32,12 +32,12 @@ export class PlayerComponent implements OnInit {
 
     this.gameService.getGames().subscribe((gamesSnapshot) => {
       gamesSnapshot.forEach((gameData: any) => {
-        console.log ("en el forEach " + gameData.payload.doc.id);
-        console.log ("información " + gameData.payload.doc.data().participantUrl);
+        //console.log ("en el forEach " + gameData.payload.doc.id);
+        //console.log ("información " + gameData.payload.doc.data().participantUrl);
         if (gameData.payload.doc.data().participantUrl== this.playerUrl)
         {
           this.newidGame = gameData.payload.doc.id;
-          console.log ("if comparacion playerUrl " + this.newidGame);
+          console.log ("if comparacion playerUrl id game " + this.newidGame);
         }
       })
     });
