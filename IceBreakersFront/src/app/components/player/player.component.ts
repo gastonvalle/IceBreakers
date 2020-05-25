@@ -29,7 +29,7 @@ export class PlayerComponent implements OnInit {
     });
   }
   createPlayer(){
-    this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl);
+    this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl, this.idGame);
     this.isPlayerCreated = true;
   }
 
