@@ -16,6 +16,9 @@ export class PlayerComponent implements OnInit {
     //this.rootUrl = (platformLocation as any).location;
   }
   isPlayerCreated: boolean = false;
+  isAddPlayer: boolean = false;
+  isPlay: boolean = false;
+  
   newidGame;
   namePlayer: string;
   imageUrl: string;

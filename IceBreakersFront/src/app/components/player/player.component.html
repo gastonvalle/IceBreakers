@@ -1,9 +1,18 @@
 
 <!-- Player URL => {{playerUrl}} -->
 <mat-card>
-  <mat-card-header>Alta jugador</mat-card-header>
-  <br>
-  <ng-container *ngIf="!isPlayerCreated; else MesageCreatePlayer">
+
+ <button mat-raised-button color="primary" class="button" (click) = "isAddPlayer = true; isPlay = false">Alta Jugador</button>
+ 
+ <button mat-raised-button color="primary" class="button" (click) =  "isPlay = true; isAddPlayer = false">Jugar</button>
+ 
+
+<ng-container *ngIf="isAddPlayer">
+
+ 
+  <ng-container *ngIf="!isPlayerCreated; else MesageCreatePlayer"> 
+    <mat-card-header>Alta jugador</mat-card-header>
+    <br>
   <div>
     <mat-form-field>
     <mat-label for="namePlayer">
@@ -22,8 +31,17 @@
   <button mat-raised-button color="primary" class="button" (click) = "createPlayer()">Crear un nuevo Jugador</button>
 </ng-container>
 
-  <ng-template #MesageCreatePlayer>
+ <ng-template #MesageCreatePlayer>
     <p>Jugador creado correctamente</p>
   </ng-template>
+
+
+</ng-container>
+
+<ng-container *ngIf="isPlay">
+
+<p>A jugar</p>
+
+</ng-container>
 
 </mat-card>
