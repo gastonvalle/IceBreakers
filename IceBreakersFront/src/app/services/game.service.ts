@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, Query } from '@angular/fire/firestore';
 import { Game } from 'src/app/shared/models/game';
 import { Players } from 'src/app/shared/models/game';
 import { Observable } from 'rxjs';
@@ -35,4 +35,9 @@ export class GameService {
   getGames() {
     return this.firestore.collection('games').snapshotChanges();
   }
+
+  getPlayers(){
+    return this.firestore.collection('players').snapshotChanges();
+  }
+
 } 

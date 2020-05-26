@@ -41,7 +41,27 @@
 <ng-container *ngIf="isPlay">
 
 <p>A jugar</p>
+<br>
 
+
+<table>
+  <thead>
+    <th>Imagen</th>
+    <th>¿Quien es?</th>
+  </thead>
+  <tr *ngFor="let player of players">
+    <td>{{player.imageUrl}}</td>
+    <td>
+    <select>
+      <option value="">Elige una opción</option>
+      <option *ngFor="let playername of players" value="{{playername.id}}">{{playername.namePlayer}}</option>
+    </select>
+    </td>
+    </tr>
+</table>
+
+<button mat-raised-button color="primary" class="button">Enviar</button>
+ 
 </ng-container>
 
 </mat-card>

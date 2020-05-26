@@ -23,8 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GameFacilitationComponent } from "./components/game-facilitation/game-facilitation.component";
@@ -40,7 +40,7 @@ import { PlayerComponent } from './components/player/player.component';
     PlayerComponent
   ],
   imports: [
-    //FireBase
+    //FireStore
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     //AngularFireStorageModule,
