@@ -2,14 +2,13 @@
 <!-- Player URL => {{playerUrl}} -->
 <mat-card>
 
- <button mat-raised-button color="primary" class="button" (click) = "isAddPlayer = true; isPlay = false">Alta Jugador</button>
+ <button mat-raised-button style="margin: 10px" color="primary" class="button" (click) = "isAddPlayer = true; isPlay = false">Alta Jugador</button>
  
- <button mat-raised-button color="primary" class="button" (click) =  "isPlay = true; isAddPlayer = false">Jugar</button>
+ <button mat-raised-button style="margin: 10px" color="primary" class="button" (click) =  "isPlay = true; isAddPlayer = false">Jugar</button>
  
-
+<br>
 <ng-container *ngIf="isAddPlayer">
 
- 
   <ng-container *ngIf="!isPlayerCreated; else MesageCreatePlayer"> 
     <mat-card-header>Alta jugador</mat-card-header>
     <br>
@@ -41,8 +40,6 @@
 <ng-container *ngIf="isPlay">
 
 <p>A jugar</p>
-<br>
-
 
 <table>
   <thead>
@@ -59,6 +56,8 @@
     </td>
     </tr>
 </table>
+
+<br>
 
 <button mat-raised-button color="primary" class="button">Enviar</button>
  
