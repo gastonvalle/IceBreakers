@@ -3,7 +3,7 @@ import { PlatformLocation } from '@angular/common'
 import { ActivatedRoute } from '@angular/router';
 
 import { GameService } from "../../services/game.service";
-import { Players, Game } from 'src/app/shared/models/game'; 
+import { Players, Game, Votes } from 'src/app/shared/models/game'; 
 
 @Component({
   selector: 'app-player',
@@ -18,6 +18,16 @@ export class PlayerComponent implements OnInit {
   isPlayerCreated: boolean = false;
   isAddPlayer: boolean = false;
   isPlay: boolean = false;
+
+  namePlayer: string;
+  imageUrl: string;
+  player: Players;
+
+  vote: Votes;
+
+  rootUrl: string;
+  playerUrl: string;
+
   numplayer: number;
   newidGame;
   
@@ -32,11 +42,7 @@ players = [
 ];
 
 
-  namePlayer: string;
-  imageUrl: string;
-  player: Players;
-  rootUrl: string;
-  playerUrl: string;
+
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -88,16 +94,6 @@ players = [
           this.players[1].namePlayer = 'elenita';
           this.players[1].imageUrl = 'casa';
           this.players[1].idGame = '3mkpLtNMfTCtOECaTqKA';
-
-          this.players[2].id= 'WV8NebywUzs55edoHZ4c';
-          this.players[2].namePlayer = 'xavi';
-          this.players[2].imageUrl = 'muntanya';
-          this.players[2].idGame = '3mkpLtNMfTCtOECaTqKA' ;
-
-          this.players[3].id= 'g45hvRCNGuGj5WIcINO2';
-          this.players[3].namePlayer = 'prova';
-          this.players[3].imageUrl = 'imatgeprova';
-          this.players[3].idGame = '3mkpLtNMfTCtOECaTqKA';
           */
     });
 
@@ -105,6 +101,10 @@ players = [
   createPlayer(){
     this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl, this.newidGame);
     this.isPlayerCreated = true;
+  }
+
+  createVote(idPlayer, playerVote){
+    this.vote = this.gameService.createVote(this.newidGame, idPlayer, playerVote);
   }
 
 

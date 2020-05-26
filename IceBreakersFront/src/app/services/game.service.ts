@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, Query } from '@angular/fire/firestore';
 import { Game } from 'src/app/shared/models/game';
 import { Players } from 'src/app/shared/models/game';
+import { Votes } from 'src/app/shared/models/game';
 import { Observable } from 'rxjs';
 import { query } from '@angular/animations';
 
@@ -30,6 +31,13 @@ export class GameService {
     this.firestore.collection('players').add({...player});
 
     return player;
+  }
+
+  createVote (idGame: string, idPlayer: string, playerVote: string){
+    var votes = new Votes(idGame, idPlayer, playerVote);
+    this.firestore.collection('votes').add({...votes});
+
+    return votes;
   }
 
   getGames() {

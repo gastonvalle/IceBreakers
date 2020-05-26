@@ -25,3 +25,16 @@ export class Players {
         this.idGame = idGame;
     }
 }
+
+export class Votes {
+    id?: string;
+    idGame: string;
+    idPlayer: string;
+    playerVote: string;
+
+    constructor (idGame: string, idPlayer: string, playerVote: string){
+        this.idGame =  idGame;
+        this.idPlayer = idPlayer;
+        this.playerVote = playerVote;
+    }
+}
