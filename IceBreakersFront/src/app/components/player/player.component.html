@@ -46,17 +46,17 @@
     <th>Imagen</th>
     <th>¿Quien es?</th>
   </thead>
-  <tr *ngFor="let player of players">
+  <tr *ngFor="let player of listOfPlayers">
     <td>{{player.imageUrl}}</td>
     <td>
-    <select name="whois">
+    <select name="whois" [(ngModel)]="opcionSelecWhois">
       <option value="">Elige una opción</option>
-      <option *ngFor="let playername of players" value="{{playername.id}}">{{playername.namePlayer}}</option>
+      <option *ngFor="let playername of listOfPlayers" value="{{playername.id}}">{{playername.namePlayer}}</option>
     </select>
     </td>
     <td>
       <!-- <button mat-raised-button color="primary" class="button" (click) = "createVote({{player.id}}, {{playername.id}})" >Enviar</button> -->
-      <button mat-raised-button color="primary" class="button" (click) = "createVote(player.id, 2)" >Enviar</button>
+      <button mat-raised-button color="primary" class="button" (click) = "createVote(player.id, opcionSelecWhois)" >Enviar</button>
     </td>
     </tr>
 </table>

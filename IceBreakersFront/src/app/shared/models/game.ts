@@ -26,6 +26,16 @@ export class Players {
     }
 }
 
+export interface Player {
+    id?: string;
+    namePlayer: string;
+    imageUrl: string;
+    idGame: string;
+
+    
+}
+
+
 export class Votes {
     id?: string;
     idGame: string;
