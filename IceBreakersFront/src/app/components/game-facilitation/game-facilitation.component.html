@@ -1,4 +1,15 @@
-<p>
-  Facilitation URL => {{facilitatorUrl}}
-</p>
+<!--<p>Facilitation URL => {{facilitatorUrl}}</p>-->
 
+<table>
+  <tr>
+    <th>Imagen</th>
+    <th>Quien es</th>
+  </tr>
+  <tr *ngFor="let player of listOfPlayers">
+    <td>{{player.imageUrl}}</td>
+    <td>{{player.namePlayer}}</td>
+    <td>
+      <button mat-raised-button color="primary" class="button">¿Quien es?</button>
+    </td>
+     </tr>
+</table>

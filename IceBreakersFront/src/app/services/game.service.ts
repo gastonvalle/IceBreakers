@@ -48,4 +48,8 @@ export class GameService {
     return this.firestore.collection('players').snapshotChanges();
   }
 
+  getVotes(){
+    return this.firestore.collection('votes').snapshotChanges();
+  }
+
 } 

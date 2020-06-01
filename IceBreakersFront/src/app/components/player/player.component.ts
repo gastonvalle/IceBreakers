@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PlatformLocation } from '@angular/common'
+import { PlatformLocation } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { GameService } from "../../services/game.service";
@@ -36,11 +36,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
   playerVote: string;
   vote : Votes;
 
-
   rootUrl: string;
   playerUrl: string;
 
-  //proof 
   newidGame: string;
   
   //subs
