@@ -4,7 +4,7 @@
 
  <button mat-raised-button style="margin: 10px" color="primary" class="button" (click) = "isAddPlayer = true; isPlay = false">Alta Jugador</button>
  
- <button mat-raised-button style="margin: 10px" color="primary" class="button" (click) =  "isPlay = true; isAddPlayer = false">Jugar</button>
+ <button mat-raised-button style="margin: 10px" color="primary" class="button" (click) =  "isPlay = true; isAddPlayer = false; loadInfoPlayers()">Jugar</button>
  
 <br>
 <ng-container *ngIf="isAddPlayer">
@@ -41,28 +41,29 @@
 
 <p>A jugar</p>
 
+
 <table>
-  <thead>
+  <form [formGroup]="form" (ngSubmit)="submitWhois()" >
+  <tr>
     <th>Imagen</th>
     <th>¿Quien es?</th>
-  </thead>
+  </tr>
   <tr *ngFor="let player of listOfPlayers">
     <td>{{player.imageUrl}}</td>
     <td>
-    <select name="whois" [(ngModel)]="opcionSelecWhois">
+    <select formControlName="whois" class="form-control">
       <option value="">Elige una opción</option>
-      <option *ngFor="let playername of listOfPlayers" value="{{playername.id}}">{{playername.namePlayer}}</option>
+      <option *ngFor="let playername of listOfPlayers" value="{{player.id}}/{{playername.id}}">{{playername.namePlayer}}</option>
     </select>
     </td>
     <td>
-      <!-- <button mat-raised-button color="primary" class="button" (click) = "createVote({{player.id}}, {{playername.id}})" >Enviar</button> -->
-      <button mat-raised-button color="primary" class="button" (click) = "createVote(player.id, opcionSelecWhois)" >Enviar</button>
+      <button mat-raised-button color="primary" class="button" type="submitWhois">Enviar</button>
     </td>
     </tr>
+  </form>
 </table>
 
 <br>
-
  
 </ng-container>
 

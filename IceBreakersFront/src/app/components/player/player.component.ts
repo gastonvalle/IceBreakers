@@ -3,8 +3,9 @@ import { PlatformLocation } from '@angular/common'
 import { ActivatedRoute } from '@angular/router';
 
 import { GameService } from "../../services/game.service";
-import { Players, Game, Votes, Player } from 'src/app/shared/models/game'; 
+import { Votes, Player } from 'src/app/shared/models/game'; 
 import { Subscription } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-player',
@@ -29,9 +30,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
 
   //information about votess
-  vote: Votes;
-  opcionSelecWhois: string;
-  indice: number = 0;
+  lenghtInfo: number;
+  posInfo: number;
+  idPlayer: string;
+  playerVote: string;
+  vote : Votes;
+
 
   rootUrl: string;
   playerUrl: string;
@@ -41,6 +45,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
   
   //subs
   subscriptionList: Subscription [];
+
+  //form
+  form = new FormGroup({
+    whois: new FormControl('', Validators.required)
+  });
 
 
   ngOnInit() {
@@ -62,8 +71,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
       })
     });
 
+  }
 
-    //search all players with idGame
+  ngOnDestroy(){
+    //las subscripciones y vaciar array
+    this.listOfPlayers = [];
+  }
+
+  loadInfoPlayers(){
+  //search all players with idGame
+    this.listOfPlayers = [];
     this.gameService.getPlayers().subscribe((playersSnapshot) => {
       playersSnapshot.forEach((playerData: any) => {
         if (playerData.payload.doc.data().idGame== this.newidGame)
@@ -79,12 +96,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
         }
       })
       console.log("Players: ", this.listOfPlayers);
-    });
-  }
-
-  ngOnDestroy(){
-    //las subscripciones y vaciar array
-    this.listOfPlayers = [];
+      });
   }
 
   createPlayer(){
@@ -92,11 +104,21 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.isPlayerCreated = true;
   }
 
-  createVote(idPlayer, playerVote){
-    this.vote = this.gameService.createVote(this.newidGame, idPlayer, playerVote);
-    this.opcionSelecWhois = '0';
-    console.log("idPlayer createVote: ", idPlayer);
-    console.log("player vote ",  playerVote);
+  createVote(informationvote: string){
+    this.lenghtInfo = informationvote.length;
+    this.posInfo = informationvote.search("/");
+    this.idPlayer = informationvote.slice(0, this.posInfo);
+    this.playerVote = informationvote.slice(this.posInfo+1);
+
+    this.vote = this.gameService.createVote(this.newidGame, this.idPlayer, this.playerVote);
+    console.log("idPlayer createVote: ", this.idPlayer);
+    console.log("player vote ",  this.playerVote);
+  }
+
+
+  submitWhois(){
+    console.log(this.form.value);
+    this.createVote(this.form.value.whois);
   }
 
 

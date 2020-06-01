@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameCoverComponent } from './components/game-cover/game-cover.component';
@@ -16,7 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //Angular Material
 import { MatInputModule } from '@angular/material/input';
@@ -47,6 +46,7 @@ import { PlayerComponent } from './components/player/player.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     
     //Angular Material
     MatInputModule,
