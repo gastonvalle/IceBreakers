@@ -104,13 +104,19 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   createVote(informationvote: string){
     this.lenghtInfo = informationvote.length;
-    this.posInfo = informationvote.search("/");
-    this.idPlayer = informationvote.slice(0, this.posInfo);
-    this.playerVote = informationvote.slice(this.posInfo+1);
+    if (this.lenghtInfo>2){
+      this.posInfo = informationvote.search("/");
+      this.idPlayer = informationvote.slice(0, this.posInfo);
+      this.playerVote = informationvote.slice(this.posInfo+1);
 
-    this.vote = this.gameService.createVote(this.newidGame, this.idPlayer, this.playerVote);
-    console.log("idPlayer createVote: ", this.idPlayer);
-    console.log("player vote ",  this.playerVote);
+      this.vote = this.gameService.createVote(this.newidGame, this.idPlayer, this.playerVote);
+      console.log("idPlayer createVote: ", this.idPlayer);
+      console.log("player vote ",  this.playerVote);
+    }
+    else{
+      alert("Debe introducir el nombre del jugador");
+    }
+    
   }
 
 
@@ -119,5 +125,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.createVote(this.form.value.whois);
   }
 
+  get errorControlForm(){
+    return this.form.controls;
+  }
 
 }
