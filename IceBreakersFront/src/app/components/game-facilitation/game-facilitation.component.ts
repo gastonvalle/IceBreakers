@@ -3,7 +3,7 @@ import { PlatformLocation } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { GameService } from "../../services/game.service";
-import { Player, Votes } from 'src/app/shared/models/game'; 
+import { Player, Vote } from 'src/app/shared/models/game'; 
 import { Subscription } from 'rxjs';
 
 @Component({

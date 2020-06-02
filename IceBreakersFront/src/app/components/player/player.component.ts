@@ -3,7 +3,7 @@ import { PlatformLocation } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { GameService } from "../../services/game.service";
-import { Votes, Player } from 'src/app/shared/models/game'; 
+import { Player, Vote } from 'src/app/shared/models/game'; 
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -35,7 +35,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   posInfo: number;
   idPlayer: string;
   playerVote: string;
-  vote : Votes;
+  vote : Vote;
 
   rootUrl: string;
   playerUrl: string;

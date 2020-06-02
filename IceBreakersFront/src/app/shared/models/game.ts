@@ -13,38 +13,18 @@ export class Game {
     } 
 }
 
-export class Players {
-    id?: string;
-    namePlayer: string;
-    imageUrl: string;
-    idGame: string;
-
-    constructor (namePlayer: string, imageUrl: string, idGame: string){
-        this.namePlayer =  namePlayer;
-        this.imageUrl = imageUrl;
-        this.idGame = idGame;
-    }
-}
 
 export interface Player {
     id?: string;
     namePlayer: string;
     imageUrl: string;
-    idGame: string;
-
-    
+    idGame: string; 
 }
 
-
-export class Votes {
+export interface Vote {
     id?: string;
     idGame: string;
     idPlayer: string;
     playerVote: string;
-
-    constructor (idGame: string, idPlayer: string, playerVote: string){
-        this.idGame =  idGame;
-        this.idPlayer = idPlayer;
-        this.playerVote = playerVote;
-    }
 }
+
