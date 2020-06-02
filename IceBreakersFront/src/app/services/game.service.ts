@@ -20,7 +20,13 @@ export class GameService {
 
   createGame(gameName:string) :Game{
     var game = new Game(gameName);
-        this.firestore.collection('games').add({...game});
+
+    this.firestore.collection('games').add({...game}).then(()=>{
+      console.log("Game creado correctamente");
+    },(error)=>{
+      console.error(error);
+    });
+
     return game;
   }
 
@@ -28,14 +34,24 @@ export class GameService {
   createPlayer(namePlayer:string, imageUrl:string, idGame: string) {
     
     var player = new Players(namePlayer, imageUrl, idGame); 
-    this.firestore.collection('players').add({...player});
+
+    this.firestore.collection('players').add({...player}).then(()=>{
+      console.log("Player creado correctamente");
+    },(error)=>{
+      console.error(error);
+    });
 
     return player;
   }
 
   createVote (idGame: string, idPlayer: string, playerVote: string){
     var votes = new Votes(idGame, idPlayer, playerVote);
-    this.firestore.collection('votes').add({...votes});
+    
+    this.firestore.collection('votes').add({...votes}).then(()=>{
+      console.log("Voto creado correctamente");
+    },(error)=>{
+      console.error(error);
+    });
 
     return votes;
   }
