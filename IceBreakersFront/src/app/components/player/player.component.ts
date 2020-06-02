@@ -66,7 +66,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
         if (gameData.payload.doc.data().participantUrl === this.playerUrl)
         {
           this.newidGame = gameData.payload.doc.id;
-          //console.log ("if comparacion playerUrl id game " + this.newidGame);
         }
       })
       if (this.newidGame == undefined){
@@ -91,12 +90,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
       playersSnapshot.forEach((playerData: any) => {
         if (playerData.payload.doc.data().idGame== this.newidGame)
         {
-          /*let playerToPush : Player = {
-            id:playerData.payload.doc.id, 
-            namePlayer:playerData.payload.doc.data().namePlayer,
-            imageUrl:playerData.payload.doc.data().imageUrl,
-            idGame:playerData.payload.doc.data().idGame
-          };*/
           let playerToPush: Player = {id:playerData.payload.doc.id, ...playerData.payload.doc.data()}
           this.listOfPlayers.push(playerToPush);
         }

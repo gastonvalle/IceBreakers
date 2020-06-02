@@ -51,9 +51,7 @@ export class GameFacilitationComponent implements OnInit, OnDestroy {
         this.loadInfoPlayers();
       }
     });
-  
   }
-
 
   ngOnDestroy(){
     //las subscripciones unsuscribe y vaciar array
@@ -68,12 +66,6 @@ export class GameFacilitationComponent implements OnInit, OnDestroy {
       playersSnapshot.forEach((playerData: any) => {
         if (playerData.payload.doc.data().idGame== this.newidGame)
         {
-          /*let playerToPush : Player = {
-            id:playerData.payload.doc.id, 
-            namePlayer:playerData.payload.doc.data().namePlayer,
-            imageUrl:playerData.payload.doc.data().imageUrl,
-            idGame:playerData.payload.doc.data().idGame
-          };*/
           let playerToPush: Player = {id:playerData.payload.doc.id, ...playerData.payload.doc.data()}
           this.listOfPlayers.push(playerToPush);
         }
