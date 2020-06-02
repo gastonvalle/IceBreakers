@@ -104,7 +104,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }
     else{
       alert("Debe introducir los datos");
-
     }
   }
 

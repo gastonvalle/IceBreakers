@@ -24,8 +24,14 @@ export class GameCreationComponent implements OnInit {
   }
 
   createGame(){
-    this.game = this.gameService.createGame(this.gameName);
-    this.isGameCreated = true;
+    if ((this.gameName != undefined)&&(this.gameName != "")){
+      this.game = this.gameService.createGame(this.gameName);
+      this.isGameCreated = true;
+    }
+    else{
+      alert("Debes introducir el nombre del juego");
+    }
+    
   }
 
 }
