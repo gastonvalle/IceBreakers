@@ -15,6 +15,8 @@ export class GameFacilitationComponent implements OnInit, OnDestroy {
   newidGame: string;
   listOfPlayers: Array<Player> = [];
 
+  playerView: boolean = true;
+
 
 
   constructor( private gameService: GameService, private route: ActivatedRoute, private platformLocation: PlatformLocation) { 
