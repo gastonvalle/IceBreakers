@@ -1,6 +1,7 @@
 
 <!-- Player URL => {{playerUrl}} -->
 <mat-card>
+  <ng-container *ngIf="okForm; else MessageErrorURL">
 
  <button mat-raised-button style="margin: 10px" color="primary" class="button" (click) = "isAddPlayer = true; isPlay = false">Alta Jugador</button>
  
@@ -9,7 +10,7 @@
 <br>
 <ng-container *ngIf="isAddPlayer">
 
-  <ng-container *ngIf="!isPlayerCreated; else MesageCreatePlayer"> 
+  <ng-container *ngIf="!isPlayerCreated; else MessageCreatePlayer"> 
     <mat-card-header>Alta jugador</mat-card-header>
     <br>
   <div>
@@ -30,7 +31,7 @@
   <button mat-raised-button color="primary" class="button" (click) = "createPlayer()">Crear un nuevo Jugador</button>
 </ng-container>
 
- <ng-template #MesageCreatePlayer>
+ <ng-template #MessageCreatePlayer>
     <p>Jugador creado correctamente</p>
   </ng-template>
 
@@ -66,5 +67,12 @@
 <br>
  
 </ng-container>
+
+</ng-container>
+
+<ng-template #MessageErrorURL>
+  <p>URL Erronea</p>
+</ng-template>
+
 
 </mat-card>

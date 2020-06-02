@@ -21,6 +21,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   isPlayerCreated: boolean;
   isAddPlayer: boolean;
   isPlay: boolean;
+  okForm: boolean = true;
 
   //information about the player
   namePlayer: string;
@@ -60,15 +61,20 @@ export class PlayerComponent implements OnInit, OnDestroy {
     //search idGame with playerUrl
     this.subsListGame=this.gameService.getGames().subscribe((gamesSnapshot) => {
       gamesSnapshot.forEach((gameData: any) => {
-        //console.log ("en el forEach " + gameData.payload.doc.id);
+        console.log ("en el forEach " + gameData.payload.doc.id);
         //console.log ("información ", typeof gameData.payload.doc.id);
         if (gameData.payload.doc.data().participantUrl === this.playerUrl)
         {
           this.newidGame = gameData.payload.doc.id;
-          //console.log ("if comparacion playerUrl id game " + this.newidGame);
+          console.log ("if comparacion playerUrl id game " + this.newidGame);
         }
       })
+      console.log("idGame ", this.newidGame);
+      if (this.newidGame == undefined){
+        this.okForm = false;
+      }
     });
+
 
   }
 
