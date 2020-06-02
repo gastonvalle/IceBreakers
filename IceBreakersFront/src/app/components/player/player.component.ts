@@ -42,7 +42,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
   newidGame: string;
   
   //subs
-  subscriptionList: Subscription [];
+  subsListPlayer: Subscription;
+  subsListGame: Subscription;
 
   //form
   form = new FormGroup({
@@ -57,7 +58,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     });
 
     //search idGame with playerUrl
-    this.gameService.getGames().subscribe((gamesSnapshot) => {
+    this.subsListGame=this.gameService.getGames().subscribe((gamesSnapshot) => {
       gamesSnapshot.forEach((gameData: any) => {
         //console.log ("en el forEach " + gameData.payload.doc.id);
         //console.log ("información ", typeof gameData.payload.doc.id);
@@ -74,12 +75,14 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     //las subscripciones y vaciar array
     this.listOfPlayers = [];
+    this.subsListGame.unsubscribe;
+    this.subsListGame.unsubscribe;
   }
 
   loadInfoPlayers(){
   //search all players with idGame
     this.listOfPlayers = [];
-    this.gameService.getPlayers().subscribe((playersSnapshot) => {
+    this.subsListPlayer=this.gameService.getPlayers().subscribe((playersSnapshot)=> {
       playersSnapshot.forEach((playerData: any) => {
         if (playerData.payload.doc.data().idGame== this.newidGame)
         {
