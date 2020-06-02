@@ -98,8 +98,15 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   createPlayer(){
-    this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl, this.newidGame);
-    this.isPlayerCreated = true;
+    console.log(this.namePlayer, " hola ", this.imageUrl);
+    if ((this.namePlayer != undefined)&&(this.imageUrl != undefined)&&(this.namePlayer != "")&&(this.imageUrl != "")) {
+      this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl, this.newidGame);
+      this.isPlayerCreated = true;
+    }
+    else{
+      alert("Debe introducir los datos");
+
+    }
   }
 
   createVote(informationvote: string){
