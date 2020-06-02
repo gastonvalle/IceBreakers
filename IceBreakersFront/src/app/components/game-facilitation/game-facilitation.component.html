@@ -1,5 +1,7 @@
 <!--<p>Facilitation URL => {{facilitatorUrl}}</p>-->
 
+<mat-card>
+<ng-container *ngIf="okForm; else MessageErrorURL">
 <table>
   <tr>
     <th>Imagen</th>
@@ -13,3 +15,9 @@
     </td>
      </tr>
 </table>
+</ng-container>
+
+<ng-template #MessageErrorURL>
+  <p>URL Erronea</p>
+</ng-template>
+</mat-card>

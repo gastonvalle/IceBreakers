@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { GameService } from "../../services/game.service";
 import { Player, Votes } from 'src/app/shared/models/game'; 
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game-facilitation',
@@ -16,12 +17,16 @@ export class GameFacilitationComponent implements OnInit, OnDestroy {
   listOfPlayers: Array<Player> = [];
 
   playerView: boolean = true;
+  okForm: boolean = true;
+
+  //subs
+  subsListPlayer: Subscription;
+  subsListGame: Subscription;
 
 
 
   constructor( private gameService: GameService, private route: ActivatedRoute, private platformLocation: PlatformLocation) { 
   }
-
  
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -29,20 +34,37 @@ export class GameFacilitationComponent implements OnInit, OnDestroy {
     });
 
     //search idGame with playerUrl
-    this.gameService.getGames().subscribe((gamesSnapshot) => {
+    this.subsListGame=this.gameService.getGames().subscribe((gamesSnapshot) => {
       gamesSnapshot.forEach((gameData: any) => {
         //console.log ("en el forEach " + gameData.payload.doc.id);
         //console.log ("información ", typeof gameData.payload.doc.id);
         if (gameData.payload.doc.data().facilitatorUrl === this.facilitatorUrl)
         {
           this.newidGame = gameData.payload.doc.id;
-          console.log ("if comparacion playerUrl id game " + this.newidGame);
+          //console.log ("if comparacion playerUrl id game " + this.newidGame);
         }
       })
+      if (this.newidGame == undefined){
+        this.okForm = false;
+      }
+      else{
+        this.loadInfoPlayers();
+      }
     });
+  
+  }
 
 
-    this.gameService.getPlayers().subscribe((playersSnapshot) => {
+  ngOnDestroy(){
+    //las subscripciones unsuscribe y vaciar array
+    this.listOfPlayers = [];
+    this.subsListGame.unsubscribe;
+    this.subsListGame.unsubscribe;
+  }
+  
+  loadInfoPlayers(){
+    //search all players with idGame
+    this.subsListPlayer=this.gameService.getPlayers().subscribe((playersSnapshot) => {
       playersSnapshot.forEach((playerData: any) => {
         if (playerData.payload.doc.data().idGame== this.newidGame)
         {
@@ -59,13 +81,5 @@ export class GameFacilitationComponent implements OnInit, OnDestroy {
       console.log("Players: ", this.listOfPlayers);
       });
 
-  
   }
-
-
-  ngOnDestroy(){
-    //las subscripciones unsuscribe y vaciar array
-    this.listOfPlayers = [];
-  }
-  
 }
