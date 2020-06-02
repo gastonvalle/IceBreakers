@@ -98,7 +98,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   createPlayer(){
-    console.log(this.namePlayer, " hola ", this.imageUrl);
     if ((this.namePlayer != undefined)&&(this.imageUrl != undefined)&&(this.namePlayer != "")&&(this.imageUrl != "")) {
       this.player = this.gameService.createPlayer(this.namePlayer, this.imageUrl, this.newidGame);
       this.isPlayerCreated = true;
@@ -126,14 +125,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
     
   }
 
-
   submitWhois(){
     console.log(this.form.value);
     this.createVote(this.form.value.whois);
   }
 
-  get errorControlForm(){
-    return this.form.controls;
-  }
 
 }
